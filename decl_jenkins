@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
 		git url:'https://github.com/trainyou/maven-web-application.git', branch: 'master'
-		sh 'sudo chmod -R +x *'
+		sh 'sudo chmod -R +x decl_jenkins'
 
             }
         }
