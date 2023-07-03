@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+		git url:'https://github.com/trainyou/maven-web-application.git', branch: 'master'
+		sh 'sudo chmod -R +x *'
+
+            }
+        }
+    }
+}
