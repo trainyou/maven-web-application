@@ -3,10 +3,11 @@ pipeline {
     tools {
     maven 'maven'
 	}
-    stage('checkoutCode') {
-        steps {
-		git credentialsId: 'ccbc4957-1a1d-4198-83bb-c06625b2c391', url: 'https://github.com/trainyou/maven-web-application.git'
-		}
+	stages{
+	    stage('checkoutCode') {
+            steps {
+		        git credentialsId: 'ccbc4957-1a1d-4198-83bb-c06625b2c391', url: 'https://github.com/trainyou/maven-web-application.git'
+		    }
 	}
 
         stage('buildPackage') {
@@ -22,5 +23,7 @@ pipeline {
     
             } 
         }
+	}
+
 }
 
