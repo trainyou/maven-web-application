@@ -1,0 +1,26 @@
+peline {
+    agent any
+    tools {
+    maven 'maven'
+	}
+    stage('checkoutCode') {
+        steps {
+		git credentialsId: 'ccbc4957-1a1d-4198-83bb-c06625b2c391', url: 'https://github.com/trainyou/maven-web-application.git'
+		}
+	}
+
+        stage('buildPackage') {
+             steps {
+                sh 'mvn clean package'
+                    }
+        }
+        stage('deployTomcat') {
+             steps {
+                sshagent(['c11c4242-e520-4584-9dd8-e3b584f5b241']) {
+                    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.90.50:/opt/tomcat/webapps"
+                }
+    
+            } 
+        }
+    }
+}
