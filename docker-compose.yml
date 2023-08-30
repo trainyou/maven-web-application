@@ -1,10 +1,10 @@
 version: '3.1'
 services:
   springboot:
-    image: dockerhandson/maven-web-application:VERSION
+    image: heartocean/working:tomcat
     restart: always
     ports:
-    - 9090:8080
+    - 80:8080
     networks:
     - mavenappbridge
 networks:
