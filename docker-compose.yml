@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   springboot:
-    image: heartocean/working:tomcat0
+    image: heartocean/working:TAG
     restart: always
     ports:
     - 80:8080
