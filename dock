@@ -1,0 +1,7 @@
+FROM maven:latest as build
+WORKDIR /maven
+COPY . .
+RUN mvn clean package
+
+FROM heartocean/working:tomcat
+COPY --from=build /maven/target/*.war /app/tomcat/webapps/camel.war

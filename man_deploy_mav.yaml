@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mav1
+  namespace: ts
+spec: 
+  selector:
+    matchLabels:
+      name: maven
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: maven
+    spec:
+      containers:
+      - name: mavenc
+        image: heartocean/k8s:Tag
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mavenserv
+  namespace: ts
+spec:
+  type: NodePort
+  labels:
+    name: maven
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30000
+
+
