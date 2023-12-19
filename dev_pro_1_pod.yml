@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: podc
-      image: heartocean/docom:1
+      image: heartocean/docom:tag
       ports:
         - name: tomport
           containerPort: 8080
