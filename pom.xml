@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://54.224.19.154:8081/repository/blackrock-release/</url>
+	      <url>http://52.91.75.228:8081/repository/rings-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://54.224.19.154:8081/repository/blackrock-snapshot/</url>
+	      <url>http://52.91.75.228:8081/repository/rings-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
