@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: learn1ingress
+  namespace: ts
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "a7d599c5d2d904d93822a1a7760190fd-a409078e7f97bd82.elb.ap-south-1.amazonaws.com"
+      http:
+        paths:  
+         - path: "/"
+           pathType: Prefix
+           backend: 
+             service: 
+               name: springreach
+               port:
+                 number: 80
