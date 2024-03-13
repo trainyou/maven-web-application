@@ -17,7 +17,7 @@ spec:
     spec: 
       containers:
         - name: app1c
-          image: heartocean/docom:t
+          image: heartocean/docom:tag
           ports:
             - name: tomp
               containerPort: 8080

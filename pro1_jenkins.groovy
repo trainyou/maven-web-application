@@ -20,14 +20,14 @@ pipeline{
     stage('dockerImagePush'){
       steps{
         withCredentials([string(credentialsId: 'docker_pass', variable: 'heartocean')]) {
-          sh "docker login -u heartocean -p ${docker_pass}"
+          sh "docker login -u heartocean -p ${heartocean}"
         }
         sh "docker push heartocean/docom:kj${BUILD_NUMBER}"
       }
     }
     stage('modifyFile'){
       steps{
-        sh "sed -i '20s/t/${BUILD_NUMBER}/g' pro1_webapp1.yaml"
+        sh "sed -i '20s/tag/${BUILD_NUMBER}/g' pro1_webapp1.yaml"
       }
     }
     stage('deployInK8s'){
