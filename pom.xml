@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://52.91.75.228:8081/repository/rings-release/</url>
+	      <url>http://65.2.170.209:8081/repository/pep-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://52.91.75.228:8081/repository/rings-snapshot/</url>
+	      <url>http://65.2.170.209:8081/repository/pep-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
