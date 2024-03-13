@@ -25,3 +25,4 @@ RUN apk add --no-cache openjdk11-jre \
 COPY --from=stage1 /mavn/target/maven-web-application*.war /app/tomcat/webapps/maven-web-app.war
 EXPOSE 8080
 CMD ["/app/tomcat/bin/catalina.sh", "run"]
+
