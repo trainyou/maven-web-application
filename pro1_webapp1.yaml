@@ -21,4 +21,3 @@ spec:
           ports:
             - name: tomp
               containerPort: 8080
-
