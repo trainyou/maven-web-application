@@ -14,7 +14,7 @@ pipeline{
     }
     stage('dockerImage'){
       steps{
-        sh "docker build -t heartocean/docom:kj${BUILD_NUMBER} -f dockerfile_for_kub ."
+        sh "docker build -t heartocean/docom:kj${BUILD_NUMBER} -f pro1_dockerfile_for_kub ."
       }
     }
     stage('dockerImagePush'){
@@ -25,9 +25,14 @@ pipeline{
         sh "docker push heartocean/docom:kj${BUILD_NUMBER}"
       }
     }
+    stage('modifyFile'){
+      steps{
+        sh "sed -i '20s/t/${BUILD_NUMBER}/g' pro1_webapp1.yaml"
+      }
+    }
     stage('deployInK8s'){
       steps{
-          sh 'kubectl apply -f webapp1.yaml -f service1.yaml -f ingress1.yaml'
+          sh 'kubectl apply -f pro1_webapp1.yaml -f pro1_service1.yaml -f pro1_ingress1.yaml'
       }
     }
   }
