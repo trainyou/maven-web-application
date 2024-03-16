@@ -10,4 +10,4 @@ spec:
   ports:
     - port: 80
       targetPort: tomp
-      nodePort: 30000
+      nodePort: 30001
