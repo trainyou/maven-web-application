@@ -4,10 +4,10 @@ metadata:
   name: ingreserv1
   namespace: ts
 spec: 
-  type: LoadBalancer
+  type: ClusterIP 
   selector:
       app: app1
   ports:
     - port: 80
       targetPort: tomp
-      nodePort: 30005
+      #nodePort: 30005

@@ -11,6 +11,7 @@ RUN apk add --no-cache openjdk11-jre tar \
 && mvn clean validate \
 && mvn clean compile \
 && mvn clean test \
+&& mvn clean sonar:sonar \
 && mvn clean package \
 && mvn clean deploy
 
