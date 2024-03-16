@@ -27,7 +27,7 @@ pipeline{
     }
     stage('modifyFile'){
       steps{
-        sh "sed -i '20s/tag/${BUILD_NUMBER}/g' pro1_webapp1.yaml"
+        sh "sed -i '20s/tag/kj${BUILD_NUMBER}/g' pro1_webapp1.yaml"
       }
     }
     stage('deployInK8s'){
