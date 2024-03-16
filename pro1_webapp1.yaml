@@ -5,7 +5,7 @@ metadata:
   namespace: ts
 spec:
   strategy:
-    type: Recreate 
+    type: RollingUpdate 
   replicas: 3
   selector:
     matchLabels: 
