@@ -8,18 +8,18 @@ spec:
   rules:
     - host: "af47e5bc009d541658a7f6debb1efd87-1509577740.ap-south-1.elb.amazonaws.com"
       http:
-        paths:  
-         - path: "/"
-           pathType: Prefix
-           backend: 
-             service: 
-               name: ingreserv1 
-               port:
-                 number: 80
-        - path: '/maven-web-app'
-          pathType: Prefix
-          backend:
-            service:
-              name: ingreserv1
-              port: 
-                number: 80
+        paths:
+          - path: "/"
+            pathType: Prefix
+              backend: 
+              service: 
+                name: ingreserv1 
+                port:
+                  number: 80
+          - path: '/maven-web-app'
+            pathType: Prefix
+            backend:
+              service:
+                name: ingreserv1
+                port: 
+                  number: 80
