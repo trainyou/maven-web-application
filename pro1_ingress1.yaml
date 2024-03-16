@@ -13,6 +13,6 @@ spec:
            pathType: Prefix
            backend: 
              service: 
-               name: springreach
+               name: ingreserv1 
                port:
                  number: 80
