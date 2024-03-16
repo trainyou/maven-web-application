@@ -16,3 +16,10 @@ spec:
                name: ingreserv1 
                port:
                  number: 80
+        - path: '/maven-web-app'
+          pathType: Prefix
+          backend:
+            service:
+              name: ingreserv1
+              port: 
+                number: 80
