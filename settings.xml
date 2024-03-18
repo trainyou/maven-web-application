@@ -173,7 +173,7 @@ under the License.
       <id>pep-proxy</id>
       <mirrorOf>*</mirrorOf>
       <name>proxy repository for central</name>
-      <url>http://65.2.170.209:8081/repository/pep-proxy/</url>
+      <url>http://13.233.130.58:8081/repository/pep-proxy/</url>
       <blocked>false</blocked>
     </mirror>
   </mirrors>
