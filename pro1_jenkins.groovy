@@ -20,8 +20,8 @@ pipeline{
     }
     stage('dockerImagePush'){
       steps{
-        withCredentials([string(credentialsId: 'docker_pass', variable: 'heartocean')]) {
-          sh "docker login -u heartocean -p ${heartocean}"
+        withCredentials([string(credentialsId: 'docker_password', variable: 'docker_pass')]) {
+          sh "docker login -u heartocean -p ${docker_pass}"
         }
         sh "docker push heartocean/docom:kj${BUILD_NUMBER}"
       }
