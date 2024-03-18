@@ -1,4 +1,4 @@
-@Library('slack_notification_1')
+@Library('slack_notification_1') _
 pipeline{
   agent any
   tools{
@@ -38,3 +38,4 @@ pipeline{
     }
   }
 }
+shrdLib
