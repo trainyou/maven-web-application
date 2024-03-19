@@ -38,4 +38,5 @@ pipeline{
     }
   }
 }
-shrdLib()
+
+slackNotify()
