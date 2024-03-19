@@ -1,8 +1,6 @@
 @Library('slack_notification_1') _
 pipeline{
-  agent {
-    label 'batch1'
-  }
+  agent any
   tools{
     git 'Default'
   }
@@ -40,4 +38,4 @@ pipeline{
     }
   }
 }
-slackNotify()
+shrdLib()
