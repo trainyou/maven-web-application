@@ -1,0 +1,26 @@
+FROM alpine as stage1
+WORKDIR /mavn
+COPY . .
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz /mavn
+RUN apk add --no-cache openjdk11-jre tar \
+&& tar -xzvf /mavn/apache-maven-3.9.6-bin.tar.gz -C /mavn \
+&& mv /mavn/apache-maven-3.9.6 /mavn/maven \
+&& mv /mavn/settings.xml /mavn/maven/conf \
+&& chmod 700 -R /mavn/maven \
+&& export PATH=$PATH:/mavn/maven/bin/ \
+&& mvn clean validate \
+&& mvn clean compile \
+&& mvn clean test \
+&& mvn clean package \
+
+FROM alpine
+WORKDIR /app
+ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.zip /app
+RUN apk add --no-cache openjdk11-jre \
+&& unzip apache-tomcat-8.5.99 -d /app \
+&& mv /app/apache-tomcat-8.5.99 /app/tomcat \
+&& chmod 700 -R /app/tomcat/  \
+&& chmod u+x /app/tomcat/bin/*.sh
+COPY --from=stage1 /mavn/target/maven-web-application*.war /app/tomcat/webapps/maven-web-app.war
+EXPOSE 8080
+CMD ["/app/tomcat/bin/catalina.sh", "run"]
