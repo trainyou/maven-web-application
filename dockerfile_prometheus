@@ -1,0 +1,22 @@
+FROM alpine as stage1
+WORKDIR /mavn
+COPY . .
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz /mavn
+RUN apk add --no-cache openjdk11-jre tar \
+&& tar -xzvf /mavn/apache-maven-3.9.6-bin.tar.gz -C /mavn \
+&& mv /mavn/apache-maven-3.9.6 /mavn/maven \
+&& chmod 700 -R /mavn/maven \
+&& export PATH=$PATH:/mavn/maven/bin/ \
+&& mvn clean package 
+
+FROM alpine
+WORKDIR /app
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip /app
+RUN apk add --no-cache openjdk11-jre \
+&& unzip apache-tomcat-9.0.97 -d /app \
+&& mv /app/apache-tomcat-9.0.97 /app/tomcat \
+&& chmod 700 -R /app/tomcat/  \
+&& chmod u+x /app/tomcat/bin/*.sh
+COPY --from=stage1 /mavn/target/*.war /app/tomcat/webapps/camel.war
+EXPOSE 8080
+CMD ["/app/tomcat/bin/catalina.sh", "run"]
